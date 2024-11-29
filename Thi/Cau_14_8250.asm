@@ -1,0 +1,47 @@
+
+;19/04/2024-Xuan-BMTD/V6
+org 100h
+
+;CAI TOC DO TRUYEN 4800bps
+;DLAB =1
+    MOV DX, 3FBH
+    MOV AL, 80H
+    OUT DX, AL
+
+    MOV AX, 24  ;4800bps
+    MOV DX, 3F8H
+    OUT DX, AL  ;LSB 
+
+    MOV AL, AH
+    MOV DX, 3F9H
+    OUT DX, AL  ;MSB
+
+    MOV DX, 3FBH
+    MOV AL, 03H ;N,8,1
+    OUT DX, AL
+
+    LEA SI, STR ;SI TRO XAU HELLO!    
+    MOV CX, 6   ;DO DAI XAU: HELLO! 
+    
+    ;KIEM TRA THANH GHITRUYEN RONG
+LAP:
+    MOV DX, 3FDH
+    IN AL, DX
+    AND AL, 40H ;BIT D6=1?
+JZ LAP     
+    ;GHI KY TU RA 8250  
+    MOV DX, 3F8H
+    MOV AL, [SI]
+    OUT DX, AL
+    INC SI
+LOOP LAP  
+
+JMP $
+
+STR DB "HELLO!"
+
+END
+
+
+
+

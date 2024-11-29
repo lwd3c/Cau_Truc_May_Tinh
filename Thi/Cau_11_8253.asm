@@ -1,0 +1,32 @@
+
+;19/04/2024-Xuan-BMTD/V6
+BD0  EQU 40h
+BD1  EQU 41h
+BD2  EQU 42h
+TGDK EQU 43H
+org 100h
+    ;CAI BD0 RA 1KHZ
+    MOV AL, 36H
+    OUT TGDK, AL
+    MOV AX, 1200
+    OUT BD0, AL
+    MOV AL, AH
+    OUT BD0, AL 
+    ;CAI BD1 RA 2KHZ
+    MOV AL, 76H
+    OUT TGDK, AL
+    MOV AX, 600
+    OUT BD1, AL
+    MOV AL, AH
+    OUT BD1, AL 
+    ;CAI BD2 RA 5KHZ
+    MOV AL, 96H
+    OUT TGDK, AL
+    MOV AL, 240
+    OUT BD2, AL     
+    JMP $
+ret
+
+
+
+

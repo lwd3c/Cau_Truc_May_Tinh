@@ -3,21 +3,33 @@ org 100h
     
     ; khoi tao cong COM
     mov ah, 0
-    mov dx, 0       ; COM1
-    mov al, 11100011b
+    mov dx, 0            ; COM1
+    mov al, 0F3h
     int 14h
    
-    ; doc trang thai cong COM
+    ; doc trang thai cong COM       
+check_empty:
     mov ah, 3
-    mov dx, 1
-    mov ah, 
+    mov dx, 0
+    int 14h   
         
-        
-   
-   
-   
-   
-   
-    msg db "Hello!"
+    ; kiem tra bit D6
+    test ah, 40h
+    jz check_empty
+    
+    lea si, msg
+    
+    mov al, [si]
+    cmp al, '$'
+    je end_proc
+    
+    mov ah, 1
+    int 14h
+    inc si
+    jmp check_empty 
+    
+    end_proc:
+    
+    msg db "Hello!$"
    
 ret

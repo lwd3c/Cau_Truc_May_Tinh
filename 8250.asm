@@ -19,7 +19,7 @@ org 100h
     ; Cai tham so cho truyen
     MOV AL, 03 	;1 stop, khong chan le, 8 bit data
 	MOV DX, 3FBH
-	OUT DX, AL
+	OUT DX, AL                                                                                                                     
 
     LEA SI,MSG	;cho SI cho vao chuoi
 B1: 
@@ -55,7 +55,3 @@ B3:
     MSG DB  "Hay go mot ky tu bat ky:",0dh,0ah,'$'
 
 ret
-
-
-
-
