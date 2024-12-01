@@ -11,7 +11,7 @@ org 100h
     OUT TGDK, AL;PA-IN,PB-OUT,PCL-IN,PCU-OUT
 LAP:
     IN AL, PA
-    AND AL, 01H ;KIEM TRA K0
+    AND AL, 01H ;KIEM TRA K0      
     JNZ NEXT1
         MOV AL, 55H
         OUT PB, AL    
@@ -34,10 +34,9 @@ LAP:
     ;DOC PCL GHI RA PCU
     IN AL,  PC
     MOV CL, 4
-    SHL AL, CL
+    SHL AL, CL        
     OUT PC, AL    
 JMP LAP    
-
 
 ret
 

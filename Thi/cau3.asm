@@ -35,5 +35,8 @@ org 100h
         dec dx
         cmp dx, 50
         jnz L3 
-
+    
+    mov ah, 4ch
+    int 21h
+    
 ret

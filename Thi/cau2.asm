@@ -13,24 +13,46 @@ org 100h
     mov dx, 60
     mov ah, 0ch 
     
-    L1:     
+;    L1:     
+;        int 10h 
+;        inc cx
+;        cmp cx, 260
+;        jnz L1 
+;        
+;        mov cx, 80
+;    L2:  
+;        int 10h 
+;        inc dx
+;        cmp dx, 150
+;        jnz L2
+;         
+;    L3: 
+;        int 10h   
+;        add cx, 2
+;        dec dx
+;        cmp dx, 60
+;        jnz L3   
+        
+       L1:     
         int 10h 
         inc cx
         cmp cx, 260
-        jnz L1 
+        jne L1 
         
-        mov cx, 80
     L2:  
-        int 10h 
+        int 10h
+        sub cx, 2 
         inc dx
         cmp dx, 150
-        jnz L2
+        jne L2
          
     L3: 
         int 10h   
-        add cx, 2
         dec dx
         cmp dx, 60
-        jnz L3
+        jne L3
+        
+        mov ah, 4ch
+        int 21h
 
 ret

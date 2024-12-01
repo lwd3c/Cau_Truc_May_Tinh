@@ -12,29 +12,23 @@ org 100h
    
    ; hien thi tung ki tu 
    mov bh, 0
-   mov bl, 47h
+   mov bl, 47h 
+   mov cx, 1
+   mov al, 31h 
+L1:    
+    mov ah, 09h
+    int 10h
+    inc al
+    cmp al, 37h
+    je Thoat  
     
-   lea si, arr   
-   L1:      
-       cmp [si], 0
-       jz Thoat 
-       mov cx, 1
-       mov al, [si] 
-       mov ah, 09h
-       int 10h 
-       
-       ; set con tro moi
-       inc si
-       inc dh 
-       ;inc dl      ; hien thi theo duong cheo
-       mov ah, 02h
-       int 10h
-       jmp L1
-    
+    inc dh
+    mov ah, 02h
+    int 10h
+    jmp L1
+        
    Thoat:
         mov ah, 4ch
         int 21h
         
-   arr db 31h, 32h, 33h, 34h, 35h, 0
-
 ret

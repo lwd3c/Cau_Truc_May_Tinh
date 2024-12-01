@@ -5,7 +5,7 @@ org 100h
 ;CAI TOC DO TRUYEN 4800bps
 ;DLAB =1
     MOV DX, 3FBH
-    MOV AL, 80H
+    MOV AL, 80H     ; DLAB = 1 
     OUT DX, AL
 
     MOV AX, 24  ;4800bps

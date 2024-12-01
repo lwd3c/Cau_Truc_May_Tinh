@@ -9,7 +9,7 @@ org 100h
   ; B(210, 50)
   ; C(210, 150)
   ; D(60, 150) 
-    mov al, 0Bh
+    mov al, 09h
     mov cx, 60
     mov dx, 50
     mov ah, 0ch 
@@ -37,5 +37,8 @@ org 100h
         dec dx
         cmp dx, 50
         jnz L4   
-        
+    
+    Thoat:
+        mov ah, 4ch
+        int 21h
 ret
